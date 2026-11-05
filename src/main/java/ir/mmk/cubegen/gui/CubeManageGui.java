@@ -125,7 +125,7 @@ public class CubeManageGui implements Listener {
         if (!(event.getWhoClicked() instanceof Player)) return;
         Player player = (Player) event.getWhoClicked();
 
-        String title = event.getView().getTitle();
+        String title = ir.mmk.cubegen.util.ItemUtil.getViewTitle(event.getView());
         if (!title.startsWith(GUI_TITLE_PREFIX)) return;
 
         event.setCancelled(true);

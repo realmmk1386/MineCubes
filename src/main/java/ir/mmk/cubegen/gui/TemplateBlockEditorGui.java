@@ -209,7 +209,7 @@ public class TemplateBlockEditorGui implements Listener {
         if (!(event.getWhoClicked() instanceof Player)) return;
         Player player = (Player) event.getWhoClicked();
 
-        String viewTitle = event.getView().getTitle();
+        String viewTitle = ir.mmk.cubegen.util.ItemUtil.getViewTitle(event.getView());
         if (!viewTitle.startsWith(GUI_TITLE_PREFIX)) return;
 
         EditorSession session = activeSessions.get(player.getUniqueId());
@@ -277,7 +277,7 @@ public class TemplateBlockEditorGui implements Listener {
 
     @EventHandler
     public void onInventoryDrag(InventoryDragEvent event) {
-        String viewTitle = event.getView().getTitle();
+        String viewTitle = ir.mmk.cubegen.util.ItemUtil.getViewTitle(event.getView());
         if (!viewTitle.startsWith(GUI_TITLE_PREFIX)) return;
 
         for (int slot : event.getRawSlots()) {

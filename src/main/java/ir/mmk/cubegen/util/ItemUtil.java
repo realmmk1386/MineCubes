@@ -16,6 +16,21 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class ItemUtil {
 
+    public static String getViewTitle(org.bukkit.inventory.InventoryView view) {
+        if (view == null) return "";
+        try {
+            java.lang.reflect.Method m = view.getClass().getMethod("getTitle");
+            return (String) m.invoke(view);
+        } catch (Throwable t) {
+            try {
+                return view.getTitle();
+            } catch (Throwable ignored) {
+                return "";
+            }
+        }
+    }
+
+
     private static NamespacedKey templateKey;
     private static NamespacedKey legacyTemplateKey;
     private static final Map<Material, Material> DIRECT_SMELT = new EnumMap<>(Material.class);

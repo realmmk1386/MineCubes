@@ -9,7 +9,7 @@ SRC_RES_DIR = os.path.join(PROJECT_DIR, "src", "main", "resources")
 LIB_DIR = os.path.join(PROJECT_DIR, "lib")
 TARGET_DIR = os.path.join(PROJECT_DIR, "target")
 CLASSES_DIR = os.path.join(TARGET_DIR, "classes")
-OUTPUT_JAR = os.path.join(TARGET_DIR, "MineCubes-2.0.0.jar")
+OUTPUT_JAR = os.path.join(TARGET_DIR, "MineCubes-2.1.0.jar")
 
 JDK_BIN = r"C:\Program Files\Java\jdk-26.0.2.1\bin"
 JAVAC = os.path.join(JDK_BIN, "javac.exe")
@@ -17,7 +17,7 @@ JAR = os.path.join(JDK_BIN, "jar.exe")
 
 def build():
     print("========================================")
-    print("       Building MineCubes v2.0.0        ")
+    print("       Building MineCubes v2.1.0        ")
     print("   Target: Minecraft 26.2 (DivineMC/Paper)")
     print("========================================")
 
