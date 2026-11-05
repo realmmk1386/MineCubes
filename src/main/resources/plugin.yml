@@ -9,6 +9,7 @@ commands:
   minecubes:
     description: Main MineCubes command
     aliases:
+      - minecube
       - mc
       - cubegen
       - cg

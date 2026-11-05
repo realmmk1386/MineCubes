@@ -160,7 +160,7 @@ public class PlacedCube {
     public Inventory getStorageInventory() {
         if (storageInventory == null) {
             CubeStorageHolder holder = new CubeStorageHolder(this);
-            storageInventory = Bukkit.createInventory(holder, 54, MessageUtil.colorize("&3CubeGen Storage: &b" + templateId));
+            storageInventory = Bukkit.createInventory(holder, 54, MessageUtil.colorize("&3MineCube Storage: &b" + templateId));
             holder.setInventory(storageInventory);
             for (int i = 0; i < storageItems.length; i++) {
                 if (storageItems[i] != null) {
@@ -326,7 +326,7 @@ public class PlacedCube {
                 }
             }
             if (droppedAny) {
-                MessageUtil.sendMessage(player, "&eAll items from CubeGen Storage were dropped at your feet.");
+                MessageUtil.sendMessage(player, "&eAll items from MineCube Storage were dropped at your feet.");
             }
         }
 
@@ -342,7 +342,7 @@ public class PlacedCube {
                 for (ItemStack drop : overflow.values()) {
                     player.getWorld().dropItemNaturally(player.getLocation(), drop);
                 }
-                MessageUtil.sendMessage(player, "&eYour inventory was full! The CubeGen item was dropped at your feet.");
+                MessageUtil.sendMessage(player, "&eYour inventory was full! The MineCube item was dropped at your feet.");
             }
             player.playSound(player.getLocation(), Sound.ENTITY_ITEM_PICKUP, 1.0f, 1.0f);
         }
@@ -411,12 +411,12 @@ public class PlacedCube {
 
             Player owner = Bukkit.getPlayer(ownerUUID);
             if (owner != null && owner.isOnline()) {
-                MessageUtil.sendMessage(owner, "&6[CubeGen] &cStorage for your &b" + templateId + " &cCubeGen is &4&lFULL&c!");
+                MessageUtil.sendMessage(owner, "&6[MineCubes] &cStorage for your &b" + templateId + " &cMineCube is &4&lFULL&c!");
                 if (wasAutoMine) {
-                    MessageUtil.sendMessage(owner, "&6[CubeGen] &eAutoMine has been &c&lDISABLED &eautomatically.");
+                    MessageUtil.sendMessage(owner, "&6[MineCubes] &eAutoMine has been &c&lDISABLED &eautomatically.");
                 }
                 if (wasStorageMode) {
-                    MessageUtil.sendMessage(owner, "&6[CubeGen] &eStorage Mode has been &c&lDISABLED &eautomatically.");
+                    MessageUtil.sendMessage(owner, "&6[MineCubes] &eStorage Mode has been &c&lDISABLED &eautomatically.");
                 }
                 owner.playSound(owner.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 1.0f, 0.5f);
             }

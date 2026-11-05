@@ -19,7 +19,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class CubeManageGui implements Listener {
 
-    public static final String GUI_TITLE_PREFIX = MessageUtil.colorize("&3CubeGen Control: &b");
+    public static final String GUI_TITLE_PREFIX = MessageUtil.colorize("&3MineCube Control: &b");
     private static final Map<UUID, PlacedCube> openCubes = new ConcurrentHashMap<>();
 
     public static void open(Player player, PlacedCube cube) {
@@ -28,7 +28,7 @@ public class CubeManageGui implements Listener {
         boolean isOwner = cube.getOwnerUUID().equals(player.getUniqueId());
         boolean isAdmin = player.hasPermission("cubegen.admin");
         if (!isOwner && !isAdmin) {
-            MessageUtil.sendMessage(player, "&cYou cannot manage this CubeGen! It belongs to &e" + cube.getOwnerName() + "&c!");
+            MessageUtil.sendMessage(player, "&cYou cannot manage this MineCube! It belongs to &e" + cube.getOwnerName() + "&c!");
             player.playSound(player.getLocation(), Sound.BLOCK_CHEST_LOCKED, 1.0f, 1.0f);
             return;
         }
@@ -44,7 +44,7 @@ public class CubeManageGui implements Listener {
         }
 
         // Slot 10: Info
-        inv.setItem(10, createGuiItem(Material.BEACON, "&b&lCubeGen Info",
+        inv.setItem(10, createGuiItem(Material.BEACON, "&b&lMineCube Info",
                 "&7• Template: &f" + cube.getTemplateId(),
                 "&7• Size: &f" + cube.getSize() + "x" + cube.getSize() + "x" + cube.getSize(),
                 "&7• Type: &f" + cube.getType(),
@@ -53,7 +53,7 @@ public class CubeManageGui implements Listener {
                 "&7• Location: &f" + cube.getCenterX() + ", " + cube.getCenterY() + ", " + cube.getCenterZ()));
 
         // Slot 12: Storage
-        inv.setItem(12, createGuiItem(Material.CHEST, "&6&lCubeGen Storage",
+        inv.setItem(12, createGuiItem(Material.CHEST, "&6&lMineCube Storage",
                 "&7Open the 54-slot Double Chest storage.",
                 "&eStored Items: &f" + cube.getStoredItemCount() + " items",
                 "",
@@ -92,8 +92,8 @@ public class CubeManageGui implements Listener {
                 "&e▸ Click to toggle!"));
 
         // Slot 22: Pick Up
-        inv.setItem(22, createGuiItem(Material.NETHER_STAR, "&a&lPick Up CubeGen",
-                "&7Click here to collect this CubeGen.",
+        inv.setItem(22, createGuiItem(Material.NETHER_STAR, "&a&lPick Up MineCube",
+                "&7Click here to collect this MineCube.",
                 "&7All placed blocks will be removed and",
                 "&7the item will return to your inventory.",
                 "&eStored items will be safely dropped!"));
@@ -142,7 +142,7 @@ public class CubeManageGui implements Listener {
         if (!isOwner && !isAdmin) {
             openCubes.remove(player.getUniqueId());
             player.closeInventory();
-            MessageUtil.sendMessage(player, "&cYou cannot manage this CubeGen! It belongs to &e" + cube.getOwnerName() + "&c!");
+            MessageUtil.sendMessage(player, "&cYou cannot manage this MineCube! It belongs to &e" + cube.getOwnerName() + "&c!");
             player.playSound(player.getLocation(), Sound.BLOCK_CHEST_LOCKED, 1.0f, 1.0f);
             return;
         }
@@ -152,7 +152,7 @@ public class CubeManageGui implements Listener {
         // 1. Storage Click (Slot 12)
         if (slot == 12) {
             if (!player.hasPermission("cubegen.storage") && !player.hasPermission("cubegen.admin")) {
-                MessageUtil.sendMessage(player, "&cYou do not have permission to use CubeGen Storage!");
+                MessageUtil.sendMessage(player, "&cYou do not have permission to use MineCube Storage!");
                 player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_LAND, 0.5f, 1.0f);
                 return;
             }
@@ -170,18 +170,18 @@ public class CubeManageGui implements Listener {
             }
             boolean newState = !cube.isAutoMineEnabled();
             if (newState && cube.isStorageFull()) {
-                MessageUtil.sendMessage(player, "&cCannot enable AutoMine: CubeGen Storage is full!");
+                MessageUtil.sendMessage(player, "&cCannot enable AutoMine: MineCube Storage is full!");
                 player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_LAND, 0.5f, 1.0f);
                 return;
             }
             cube.setAutoMineEnabled(newState);
             if (newState) {
                 cube.startAutoMineTask(plugin);
-                MessageUtil.sendMessage(player, "&aAutoMine has been &2&lENABLED &afor this CubeGen!");
+                MessageUtil.sendMessage(player, "&aAutoMine has been &2&lENABLED &afor this MineCube!");
                 player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.5f);
             } else {
                 cube.stopAutoMineTask();
-                MessageUtil.sendMessage(player, "&eAutoMine has been &c&lDISABLED &efor this CubeGen.");
+                MessageUtil.sendMessage(player, "&eAutoMine has been &c&lDISABLED &efor this MineCube.");
                 player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_BASS, 1.0f, 1.0f);
             }
             plugin.getPlacedCubeManager().save();
@@ -226,13 +226,13 @@ public class CubeManageGui implements Listener {
             }
             boolean newState = !cube.isStorageModeEnabled();
             if (newState && cube.isStorageFull()) {
-                MessageUtil.sendMessage(player, "&cCannot enable Storage Mode: CubeGen Storage is full!");
+                MessageUtil.sendMessage(player, "&cCannot enable Storage Mode: MineCube Storage is full!");
                 player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_LAND, 0.5f, 1.0f);
                 return;
             }
             cube.setStorageModeEnabled(newState);
             if (newState) {
-                MessageUtil.sendMessage(player, "&aStorage Mode &2&lENABLED&a! Mined items will go into CubeGen Storage.");
+                MessageUtil.sendMessage(player, "&aStorage Mode &2&lENABLED&a! Mined items will go into MineCube Storage.");
                 player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1.0f, 1.5f);
             } else {
                 MessageUtil.sendMessage(player, "&eStorage Mode &c&lDISABLED&e. Mined items will drop normally.");

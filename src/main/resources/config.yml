@@ -1,7 +1,7 @@
 setting:
 
   # ----------------------------------------------- #
-  # Global CubeGen configuration                    #
+  # Global MineCubes configuration                    #
   # ----------------------------------------------- #
 
   size:
@@ -9,10 +9,10 @@ setting:
     maximum: 33
     default: 5
 
-  # Maximum number of CubeGens a player can have placed at once (0 or negative for unlimited)
+  # Maximum number of MineCubes a player can have placed at once (0 or negative for unlimited)
   max_placed_per_player: 10
 
-  # Allow players who are not the owner to mine blocks inside a placed CubeGen
+  # Allow players who are not the owner to mine blocks inside a placed MineCube
   allow_others_to_mine: true
 
   # ----------------------------------------------- #

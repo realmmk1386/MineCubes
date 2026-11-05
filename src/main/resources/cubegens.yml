@@ -1,7 +1,7 @@
 # ======================================================= #
-#                 CubeGen Templates File                  #
+#                 MineCubes Templates File                  #
 # ======================================================= #
-# Define your custom CubeGen templates here.              #
+# Define your custom MineCubes templates here.              #
 # Each template defines:                                  #
 # - name: Display name of the generator                   #
 # - size: Cube dimensions (odd numbers: 3, 5, 7, etc.)    #
@@ -12,7 +12,7 @@
 
 templates:
   default:
-    name: "Default CubeGen"
+    name: "Default MineCube"
     size: 5
     type: "protect"
     regen: 10
@@ -23,7 +23,7 @@ templates:
       IRON_ORE: 3.0
 
   diamond:
-    name: "Diamond CubeGen"
+    name: "Diamond MineCube"
     size: 5
     type: "protect"
     regen: 8
@@ -34,7 +34,7 @@ templates:
       DEEPSLATE_DIAMOND_ORE: 5.0
 
   nether:
-    name: "Nether CubeGen"
+    name: "Nether MineCube"
     size: 5
     type: "protect"
     regen: 10

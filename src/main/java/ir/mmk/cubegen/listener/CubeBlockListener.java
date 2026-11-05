@@ -39,9 +39,9 @@ public class CubeBlockListener implements Listener {
         if (cube != null) {
             event.setCancelled(true);
             if (cube.isLadderBlock(block.getLocation())) {
-                MessageUtil.sendMessage(player, "&cYou cannot break the CubeGen ladder! Use &eShift + Right-Click &con the bedrock frame to pick it up.");
+                MessageUtil.sendMessage(player, "&cYou cannot break the MineCube ladder! Use &eShift + Right-Click &con the bedrock frame to pick it up.");
             } else {
-                MessageUtil.sendMessage(player, "&cYou cannot break the CubeGen frame! Use &eShift + Right-Click &cto pick it up.");
+                MessageUtil.sendMessage(player, "&cYou cannot break the MineCube frame! Use &eShift + Right-Click &cto pick it up.");
             }
             return;
         }
@@ -56,7 +56,7 @@ public class CubeBlockListener implements Listener {
                 boolean allowOthersToMine = plugin.getConfig().getBoolean("setting.allow_others_to_mine", true);
                 if (!allowOthersToMine) {
                     event.setCancelled(true);
-                    MessageUtil.sendMessage(player, "&cYou cannot mine inside another player's CubeGen!");
+                    MessageUtil.sendMessage(player, "&cYou cannot mine inside another player's MineCube!");
                     return;
                 }
             }

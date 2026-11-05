@@ -45,7 +45,7 @@ public class CubeInteractListener implements Listener {
             event.setCancelled(true);
 
             if (!player.hasPermission("cubegen.place") && !player.hasPermission("cubegen.use")) {
-                MessageUtil.sendMessage(player, "&cYou do not have permission to place CubeGens!");
+                MessageUtil.sendMessage(player, "&cYou do not have permission to place MineCubes!");
                 return;
             }
 
@@ -53,7 +53,7 @@ public class CubeInteractListener implements Listener {
             CubeTemplate template = plugin.getTemplateManager().getTemplate(templateId);
 
             if (template == null) {
-                MessageUtil.sendMessage(player, "&cInvalid CubeGen template: " + templateId);
+                MessageUtil.sendMessage(player, "&cInvalid MineCube template: " + templateId);
                 return;
             }
 
@@ -112,7 +112,7 @@ public class CubeInteractListener implements Listener {
                 boolean isAdmin = player.hasPermission("cubegen.admin");
 
                 if (!isOwner && !isAdmin) {
-                    MessageUtil.sendMessage(player, "&cThis CubeGen belongs to &e" + cube.getOwnerName() + "&c! Only the owner can access settings, storage, or pick it up.");
+                    MessageUtil.sendMessage(player, "&cThis MineCube belongs to &e" + cube.getOwnerName() + "&c! Only the owner can access settings, storage, or pick it up.");
                     player.playSound(player.getLocation(), Sound.BLOCK_CHEST_LOCKED, 1.0f, 1.0f);
                     return;
                 }

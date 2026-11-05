@@ -16,7 +16,7 @@ public class CommandManager {
         try {
             Class.forName("io.papermc.paper.command.brigadier.BasicCommand");
             CubeGenBasicCommand basicCmd = new CubeGenBasicCommand(plugin);
-            plugin.registerCommand("minecubes", "Main MineCubes command", List.of("mc", "cubegen", "cg"), basicCmd);
+            plugin.registerCommand("minecubes", "Main MineCubes command", List.of("minecube", "mc", "cubegen", "cg"), basicCmd);
             registered = true;
             return;
         } catch (Throwable ignored) {

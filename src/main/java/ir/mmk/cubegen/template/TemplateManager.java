@@ -69,7 +69,7 @@ public class TemplateManager {
             templates.put(id.toLowerCase(Locale.ROOT), template);
         }
 
-        plugin.getLogger().info("Loaded " + templates.size() + " CubeGen templates from cubegens.yml");
+        plugin.getLogger().info("Loaded " + templates.size() + " MineCubes templates from cubegens.yml");
     }
 
     public void save() {
@@ -149,7 +149,7 @@ public class TemplateManager {
             YamlConfiguration config = new YamlConfiguration();
 
             // Default template
-            config.set("templates.default.name", "Default CubeGen");
+            config.set("templates.default.name", "Default MineCube");
             config.set("templates.default.size", 5);
             config.set("templates.default.type", "protect");
             config.set("templates.default.regen", 10);
@@ -159,7 +159,7 @@ public class TemplateManager {
             config.set("templates.default.blocks.IRON_ORE", 3.0);
 
             // Diamond template
-            config.set("templates.diamond.name", "Diamond CubeGen");
+            config.set("templates.diamond.name", "Diamond MineCube");
             config.set("templates.diamond.size", 5);
             config.set("templates.diamond.type", "protect");
             config.set("templates.diamond.regen", 8);

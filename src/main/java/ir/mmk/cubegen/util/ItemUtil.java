@@ -17,6 +17,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ItemUtil {
 
     private static NamespacedKey templateKey;
+    private static NamespacedKey legacyTemplateKey;
     private static final Map<Material, Material> DIRECT_SMELT = new EnumMap<>(Material.class);
     private static final Map<Material, Material> RECIPE_CACHE = new ConcurrentHashMap<>();
 
@@ -167,7 +168,8 @@ public class ItemUtil {
     }
 
     public static void init(CubeGen plugin) {
-        templateKey = new NamespacedKey(plugin, "cubegen_template");
+        templateKey = new NamespacedKey(plugin, "minecubes_template");
+        legacyTemplateKey = new NamespacedKey(plugin, "cubegen_template");
     }
 
     public static NamespacedKey getTemplateKey() {
@@ -183,7 +185,7 @@ public class ItemUtil {
             return false;
         }
         PersistentDataContainer pdc = meta.getPersistentDataContainer();
-        return pdc.has(templateKey, PersistentDataType.STRING);
+        return pdc.has(templateKey, PersistentDataType.STRING) || (legacyTemplateKey != null && pdc.has(legacyTemplateKey, PersistentDataType.STRING));
     }
 
     public static String getTemplateIdFromItem(ItemStack item) {
@@ -193,7 +195,13 @@ public class ItemUtil {
         ItemMeta meta = item.getItemMeta();
         if (meta == null) return null;
         PersistentDataContainer pdc = meta.getPersistentDataContainer();
-        return pdc.get(templateKey, PersistentDataType.STRING);
+        if (pdc.has(templateKey, PersistentDataType.STRING)) {
+            return pdc.get(templateKey, PersistentDataType.STRING);
+        }
+        if (legacyTemplateKey != null && pdc.has(legacyTemplateKey, PersistentDataType.STRING)) {
+            return pdc.get(legacyTemplateKey, PersistentDataType.STRING);
+        }
+        return null;
     }
 
     public static ItemStack tagCubeGenItem(ItemStack original, String templateId) {
@@ -215,7 +223,7 @@ public class ItemUtil {
         if (meta != null) {
             meta.setDisplayName(MessageUtil.colorize("&b&l" + displayName));
             List<String> lore = new ArrayList<>();
-            lore.add(MessageUtil.colorize("&7Right-click on ground to place your CubeGen."));
+            lore.add(MessageUtil.colorize("&7Right-click on ground to place your MineCube."));
             lore.add(MessageUtil.colorize("&8-------------------------"));
             lore.add(MessageUtil.colorize("&eTemplate: &f" + templateId));
             lore.add(MessageUtil.colorize("&eSize: &f" + size + "x" + size + "x" + size));

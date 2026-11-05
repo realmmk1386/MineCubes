@@ -77,7 +77,7 @@ public class CubeGenCommand implements CommandExecutor, TabCompleter {
                 for (ItemStack drop : overflow.values()) {
                     target.getWorld().dropItemNaturally(target.getLocation(), drop);
                 }
-                MessageUtil.sendMessage(target, "&eYour inventory was full! CubeGen item was dropped at your feet.");
+                MessageUtil.sendMessage(target, "&eYour inventory was full! MineCube item was dropped at your feet.");
             }
 
             MessageUtil.sendMessage(sender, "&aGave &e" + amount + "x &b" + template.getDisplayName() + " &ato &e" + target.getName() + "&a!");
@@ -103,7 +103,7 @@ public class CubeGenCommand implements CommandExecutor, TabCompleter {
             if (action.equals("list")) {
                 Collection<CubeTemplate> list = plugin.getTemplateManager().getAllTemplates();
                 MessageUtil.sendMessage(sender, "&8&m--------------------------------------------------");
-                MessageUtil.sendMessage(sender, "&b&lCubeGen Templates &7(" + list.size() + "):");
+                MessageUtil.sendMessage(sender, "&b&lMineCubes Templates &7(" + list.size() + "):");
                 for (CubeTemplate t : list) {
                     MessageUtil.sendMessage(sender, " &8• &b" + t.getId() + " &7- Size: &f" + t.getSize()
                             + " &7| Type: &f" + t.getType() + " &7| Regen: &f" + t.getRegenInterval() + "s"
@@ -296,9 +296,9 @@ public class CubeGenCommand implements CommandExecutor, TabCompleter {
             List<PlacedCube> cubes = plugin.getPlacedCubeManager().getPlayerCubes(player.getUniqueId());
 
             MessageUtil.sendMessage(player, "&8&m--------------------------------------------------");
-            MessageUtil.sendMessage(player, "&b&lYour Placed CubeGens &7(" + cubes.size() + "):");
+            MessageUtil.sendMessage(player, "&b&lYour Placed MineCubes &7(" + cubes.size() + "):");
             if (cubes.isEmpty()) {
-                MessageUtil.sendMessage(player, "&7You have not placed any CubeGens yet.");
+                MessageUtil.sendMessage(player, "&7You have not placed any MineCubes yet.");
             } else {
                 int i = 1;
                 for (PlacedCube c : cubes) {
@@ -321,7 +321,7 @@ public class CubeGenCommand implements CommandExecutor, TabCompleter {
 
             PlacedCube cube = plugin.getPlacedCubeManager().findCubeForPlayer(player, query);
             if (cube == null) {
-                MessageUtil.sendMessage(player, "&cNo matching placed CubeGen found!");
+                MessageUtil.sendMessage(player, "&cNo matching placed MineCube found!");
                 return true;
             }
 
@@ -336,7 +336,7 @@ public class CubeGenCommand implements CommandExecutor, TabCompleter {
                 return true;
             }
             plugin.reloadPlugin();
-            MessageUtil.sendMessage(sender, "&aCubeGen configurations reloaded successfully!");
+            MessageUtil.sendMessage(sender, "&aMineCubes configurations reloaded successfully!");
             return true;
         }
 
@@ -348,7 +348,7 @@ public class CubeGenCommand implements CommandExecutor, TabCompleter {
         MessageUtil.sendMessage(sender, "&8&m--------------------------------------------------");
         MessageUtil.sendMessage(sender, "&b&lMine&e&lCubes &f- &3Commands");
         MessageUtil.sendMessage(sender, "&8&m--------------------------------------------------");
-        MessageUtil.sendMessage(sender, "&b/" + label + " give <player> <template> [amount] &7- Give CubeGen item");
+        MessageUtil.sendMessage(sender, "&b/" + label + " give <player> <template> [amount] &7- Give MineCube item");
         MessageUtil.sendMessage(sender, "&b/" + label + " template list &7- List all templates");
         MessageUtil.sendMessage(sender, "&b/" + label + " template create <name> [size] [type] [regen] &7- Create template");
         MessageUtil.sendMessage(sender, "&b/" + label + " template edit <name> &7- Open GUI to set blocks & chances");

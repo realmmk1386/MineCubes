@@ -22,7 +22,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class TemplateBlockEditorGui implements Listener {
 
-    public static final String GUI_TITLE_PREFIX = MessageUtil.colorize("&3CubeGen Editor: &b");
+    public static final String GUI_TITLE_PREFIX = MessageUtil.colorize("&3MineCube Editor: &b");
 
     private static final Map<UUID, EditorSession> activeSessions = new ConcurrentHashMap<>();
 
@@ -162,7 +162,7 @@ public class TemplateBlockEditorGui implements Listener {
         } else {
             inv.setItem(48, createGuiItem(Material.EMERALD_BLOCK, "&a&lSave & Apply",
                     "&7Total percentage: &f" + String.format("%.1f", total) + "% / 100%",
-                    "&aClick to save blocks and chances to cubegens.yml."));
+                    "&aClick to save blocks and chances to templates."));
         }
 
         inv.setItem(49, createGuiItem(Material.GRAY_STAINED_GLASS_PANE, " "));
@@ -235,7 +235,7 @@ public class TemplateBlockEditorGui implements Listener {
                 double total = session.calculateTotalPercentage();
                 if (total > 100.0) {
                     player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_LAND, 0.7f, 1.0f);
-                    MessageUtil.sendMessage(player, "&8[&f&lCube&b&lGen&8] &cError: Total spawn percentage is &e" + String.format("%.1f", total) + "%&c, which exceeds 100%! Please adjust chances or click Auto-Balance before saving.");
+                    MessageUtil.sendMessage(player, "&8[&b&lMine&f&lCubes&8] &cError: Total spawn percentage is &e" + String.format("%.1f", total) + "%&c, which exceeds 100%! Please adjust chances or click Auto-Balance before saving.");
                     openInventoryForSession(player, session);
                     return;
                 }

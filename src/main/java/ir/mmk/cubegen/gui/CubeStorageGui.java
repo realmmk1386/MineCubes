@@ -20,7 +20,7 @@ public class CubeStorageGui implements Listener {
         boolean isOwner = cube.getOwnerUUID().equals(player.getUniqueId());
         boolean isAdmin = player.hasPermission("cubegen.admin");
         if (!isOwner && !isAdmin) {
-            MessageUtil.sendMessage(player, "&cYou cannot open this storage! This CubeGen belongs to &e" + cube.getOwnerName() + "&c!");
+            MessageUtil.sendMessage(player, "&cYou cannot open this storage! This MineCube belongs to &e" + cube.getOwnerName() + "&c!");
             player.playSound(player.getLocation(), Sound.BLOCK_CHEST_LOCKED, 1.0f, 1.0f);
             return;
         }
@@ -43,7 +43,7 @@ public class CubeStorageGui implements Listener {
                 if (!isOwner && !isAdmin) {
                     event.setCancelled(true);
                     player.closeInventory();
-                    MessageUtil.sendMessage(player, "&cYou cannot access this storage! This CubeGen belongs to &e" + cube.getOwnerName() + "&c!");
+                    MessageUtil.sendMessage(player, "&cYou cannot access this storage! This MineCube belongs to &e" + cube.getOwnerName() + "&c!");
                     player.playSound(player.getLocation(), Sound.BLOCK_CHEST_LOCKED, 1.0f, 1.0f);
                 }
             }

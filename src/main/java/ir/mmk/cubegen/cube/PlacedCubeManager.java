@@ -104,7 +104,7 @@ public class PlacedCubeManager {
             }
         }
 
-        plugin.getLogger().info("Loaded " + placedCubes.size() + " placed CubeGens.");
+        plugin.getLogger().info("Loaded " + placedCubes.size() + " placed MineCubes.");
     }
 
     public void save() {
@@ -165,7 +165,7 @@ public class PlacedCubeManager {
         if (maxPerPlayer > 0 && !player.hasPermission("cubegen.admin")) {
             long count = getPlayerCubes(player.getUniqueId()).size();
             if (count >= maxPerPlayer) {
-                MessageUtil.sendMessage(player, "&cYou have reached the maximum allowed placed CubeGens (" + maxPerPlayer + ")!");
+                MessageUtil.sendMessage(player, "&cYou have reached the maximum allowed placed MineCubes (" + maxPerPlayer + ")!");
                 return false;
             }
         }
@@ -176,14 +176,14 @@ public class PlacedCubeManager {
 
         // Check world bounds
         if (center.getBlockY() - frameExtent < world.getMinHeight() || center.getBlockY() + frameExtent > world.getMaxHeight()) {
-            MessageUtil.sendMessage(player, "&cCannot place CubeGen: height is out of world bounds!");
+            MessageUtil.sendMessage(player, "&cCannot place MineCube: height is out of world bounds!");
             return false;
         }
 
         // Check if overlaps with another existing cube
         for (PlacedCube existing : placedCubes.values()) {
             if (existing.isLocationPartOfCube(center)) {
-                MessageUtil.sendMessage(player, "&cCannot place CubeGen: overlaps with another CubeGen!");
+                MessageUtil.sendMessage(player, "&cCannot place MineCube: overlaps with another MineCube!");
                 return false;
             }
         }
@@ -227,7 +227,7 @@ public class PlacedCubeManager {
         for (Location loc : placedCube.getAllLocations()) {
             Block b = loc.getBlock();
             if (b.getType() != Material.AIR && !b.isLiquid() && !ItemUtil.isReplaceable(b.getType())) {
-                MessageUtil.sendMessage(player, "&cCannot place CubeGen: The area is obstructed by &e" + b.getType().name() + "&c! Please place in an open space.");
+                MessageUtil.sendMessage(player, "&cCannot place MineCube: The area is obstructed by &e" + b.getType().name() + "&c! Please place in an open space.");
                 return false;
             }
         }
@@ -258,7 +258,7 @@ public class PlacedCubeManager {
 
         if (player != null && !player.hasPermission("cubegen.admin")) {
             if (!cube.getOwnerUUID().equals(player.getUniqueId())) {
-                MessageUtil.sendMessage(player, "&cYou cannot pick up this CubeGen! It belongs to &e" + cube.getOwnerName() + "&c!");
+                MessageUtil.sendMessage(player, "&cYou cannot pick up this MineCube! It belongs to &e" + cube.getOwnerName() + "&c!");
                 try {
                     player.playSound(player.getLocation(), Sound.BLOCK_CHEST_LOCKED, 1.0f, 1.0f);
                 } catch (Throwable ignored) {}
@@ -271,7 +271,7 @@ public class PlacedCubeManager {
         save();
 
         if (player != null && player.isOnline()) {
-            MessageUtil.sendMessage(player, "&aSuccessfully picked up your CubeGen &b(" + cube.getTemplateId() + ")&a!");
+            MessageUtil.sendMessage(player, "&aSuccessfully picked up your MineCube &b(" + cube.getTemplateId() + ")&a!");
         }
         return true;
     }
