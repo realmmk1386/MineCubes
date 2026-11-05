@@ -1,0 +1,88 @@
+name: MineCubes
+main: ir.mmk.cubegen.CubeGen
+version: 2.1.0
+api-version: '1.20'
+author: mmk1386
+description: Advanced Cube Generator plugin with customizable templates, GUI block editor, auto-regen, automine, auto-smelt, virtual storage and item linking.
+
+commands:
+  minecubes:
+    description: Main MineCubes command
+    aliases:
+      - mc
+      - cubegen
+      - cg
+      - cubeGen
+    permission: minecubes.use
+
+permissions:
+  minecubes.*:
+    description: All MineCubes permissions
+    default: op
+    children:
+      minecubes.use: true
+      minecubes.place: true
+      minecubes.unplace: true
+      minecubes.admin: true
+      minecubes.give: true
+      minecubes.storage: true
+      minecubes.automine: true
+      minecubes.autosmelt: true
+      cubegen.use: true
+      cubegen.place: true
+      cubegen.unplace: true
+      cubegen.admin: true
+      cubegen.give: true
+      cubegen.storage: true
+      cubegen.automine: true
+      cubegen.autosmelt: true
+
+  minecubes.use:
+    description: Allows using basic MineCubes commands
+    default: true
+
+  minecubes.place:
+    description: Allows placing a MineCubes generator
+    default: true
+
+  minecubes.unplace:
+    description: Allows picking up your MineCubes generator
+    default: true
+
+  minecubes.storage:
+    description: Allows accessing MineCubes virtual Storage and toggling Storage Mode
+    default: op
+
+  minecubes.automine:
+    description: Allows using and toggling the AutoMine automation feature
+    default: op
+
+  minecubes.autosmelt:
+    description: Allows using the Auto Smelt feature during AutoMine
+    default: op
+
+  minecubes.admin:
+    description: Administrative permission to edit templates, reload plugin, and manage all cubes
+    default: op
+
+  minecubes.give:
+    description: Allows giving MineCubes items to players
+    default: op
+
+  # Legacy aliases for backwards compatibility
+  cubegen.use:
+    default: true
+  cubegen.place:
+    default: true
+  cubegen.unplace:
+    default: true
+  cubegen.storage:
+    default: op
+  cubegen.automine:
+    default: op
+  cubegen.autosmelt:
+    default: op
+  cubegen.admin:
+    default: op
+  cubegen.give:
+    default: op

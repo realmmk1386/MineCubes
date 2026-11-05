@@ -1,0 +1,7 @@
+name: MineCubes
+version: 2.1.0
+main: ir.mmk.cubegen.CubeGen
+api-version: '1.21'
+folia-supported: true
+author: mmk1386
+description: Advanced Cube Generator plugin with customizable templates, GUI block editor, auto-regen, automine, auto-smelt, virtual storage and item linking.

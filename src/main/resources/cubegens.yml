@@ -1,0 +1,45 @@
+# ======================================================= #
+#                 CubeGen Templates File                  #
+# ======================================================= #
+# Define your custom CubeGen templates here.              #
+# Each template defines:                                  #
+# - name: Display name of the generator                   #
+# - size: Cube dimensions (odd numbers: 3, 5, 7, etc.)    #
+# - type: 'protect' (bedrock frame) or 'normal'           #
+# - regen: Auto-regeneration interval in seconds          #
+# - blocks: Block materials and their spawn chance/weight #
+# ======================================================= #
+
+templates:
+  default:
+    name: "Default CubeGen"
+    size: 5
+    type: "protect"
+    regen: 10
+    blocks:
+      STONE: 70.0
+      COBBLESTONE: 20.0
+      COAL_ORE: 7.0
+      IRON_ORE: 3.0
+
+  diamond:
+    name: "Diamond CubeGen"
+    size: 5
+    type: "protect"
+    regen: 8
+    blocks:
+      STONE: 50.0
+      DEEPSLATE: 30.0
+      DIAMOND_ORE: 15.0
+      DEEPSLATE_DIAMOND_ORE: 5.0
+
+  nether:
+    name: "Nether CubeGen"
+    size: 5
+    type: "protect"
+    regen: 10
+    blocks:
+      NETHERRACK: 60.0
+      NETHER_QUARTZ_ORE: 25.0
+      NETHER_GOLD_ORE: 12.0
+      ANCIENT_DEBRIS: 3.0
